@@ -1,0 +1,1 @@
+# Carl Programmer Blog is a personal blog where I share my programming experiences, projects, and insights. It serves as a platform for me to document my journey as a programmer and to connect with fellow developers and enthusiasts.
