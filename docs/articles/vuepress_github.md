@@ -172,7 +172,25 @@ docs/.vitepress/cache
 npm run docs:dev
 ```
 
-## 9. 创建GitHub Actions工作流配置
+## 9. 创建 & 部署至GitHub
+
+#### 1. 创建 GitHub 仓库
+
+1. 登录到你的 GitHub 账户。
+2. 点击右上角的 "+" 按钮，选择 "New repository"。
+3. 在 "Repository name" 字段中输入 `username.github.io`（将 `username` 替换为你的 GitHub 用户名）。
+4. 选择 "Public"（公开）或 "Private"（私有），然后点击 "Create repository"。
+5. 按照github的提示进行命令的执行
+   ``` bash
+   echo "# xx-xx.github.io" >> README.md
+   git init
+   git add README.md
+   git commit -m "first commit"
+   git branch -M main
+   git remote add origin git@github.com:xx-xx/xx-xx.github.io.git
+   git push -u origin main
+   ```
+#### 2. 创建GitHub Actions工作流 进行自动部署
 
 为了自动部署到 GitHub Pages，创建 GitHub Actions 工作流配置文件：`.github/workflows/deploy.yml`
 
@@ -201,22 +219,22 @@ jobs:
         uses: actions/checkout@v3
         with:
           fetch-depth: 0
-  
+      
       - name: Setup Node
         uses: actions/setup-node@v3
         with:
           node-version: 18
           cache: npm
-  
+      
       - name: Setup Pages
         uses: actions/configure-pages@v3
-  
+      
       - name: Install dependencies
-        run: npm ci
-  
+        run: npm install
+      
       - name: Build
         run: npm run docs:build
-  
+      
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
@@ -231,25 +249,7 @@ jobs:
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v2
+        uses: actions/deploy-pages@v4
 ```
 
-## 创建 & 部署至GitHub
-
-#### 1. 创建 GitHub 仓库
-
-1. 登录到你的 GitHub 账户。
-2. 点击右上角的 "+" 按钮，选择 "New repository"。
-3. 在 "Repository name" 字段中输入 `username.github.io`（将 `username` 替换为你的 GitHub 用户名）。
-4. 选择 "Public"（公开）或 "Private"（私有），然后点击 "Create repository"。
-5. 按照github的提示进行命令的执行
-   ``` bash
-   echo "# xx-xx.github.io" >> README.md
-   git init
-   git add README.md
-   git commit -m "first commit"
-   git branch -M main
-   git remote add origin git@github.com:xx-xx/xx-xx.github.io.git
-   git push -u origin main
-   ```
-#### 2. 部署 GitHub 仓库 todo
+最后保存更改，提交代码`git push -u origin main`即可
