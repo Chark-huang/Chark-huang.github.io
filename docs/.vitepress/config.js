@@ -16,6 +16,12 @@ export default defineConfig({
           items: [
             { text: 'VitePress + GitHub Pages 部署博客项目', link: '/articles/vuepress_github' }
           ]
+        },
+        {
+          text: '计算机原理',
+          items: [
+            { text: 'CRC-32 原理', link: '/articles/ComputerWorkingPrinciple/crc' }
+          ]
         }
       ]
     },
