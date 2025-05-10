@@ -14,7 +14,8 @@ export default defineConfig({
         {
           text: '文章列表',
           items: [
-            { text: 'VitePress + GitHub Pages 部署博客项目', link: '/articles/vuepress_github' }
+            { text: 'VitePress + GitHub Pages 部署博客项目', link: '/articles/vuepress_github' },
+            { text: 'Wrk 压测工具入门', link: '/articles/wrk-1' }
           ]
         },
         {
